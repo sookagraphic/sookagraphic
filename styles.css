@@ -1439,7 +1439,8 @@ main {
 .works-image-placeholder {
   width: 100%;
   height: 100%;
-  background-color: #C0A392;
+  /* 대표 썸네일 배경색을 흰색으로 변경해 검은/어두운 줄이 보이지 않도록 처리 */
+  background-color: #FFFFFF;
   border-radius: 0;
   position: relative;
   overflow: hidden;
@@ -1656,9 +1657,9 @@ main {
     align-items: center;
   }
 
-  /* 가로가 긴 이미지일 때 모바일 뷰에서 140px 아래로 이동 */
+  /* 가로가 긴 이미지일 때 모바일 뷰에서 기본 위치보다 100px 아래로 이동 (기존 140px에서 40px 위로) */
   .works-image-main.is-wide-mobile {
-    margin-top: 140px;
+    margin-top: 100px;
   }
 
   .works-image-placeholder {

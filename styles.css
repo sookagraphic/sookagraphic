@@ -1,0 +1,1731 @@
+/* 기본 변수 */
+:root {
+  --font-heading: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-bg: #FFFFFF;
+  --color-text: #000000;
+  --color-muted: #777777;
+  --color-footer-text: #FFFFFF;
+  --color-footer-copyright: #FFF167;
+
+  /* --page-max-width: 1440px; */
+  --gutter: 20px;
+
+  /* Footer variables */
+  --footer-content-padding-top: 120px;
+  --footer-column-gap: 40px;
+  --footer-item-gap: 29px;
+  --footer-label-text-gap: 7px;
+  --footer-copyright-margin-top: -3px;
+  --footer-label-font-size: 14px;
+  --footer-text-font-size: 14px;
+  --footer-copyright-font-size: 15px;
+  --footer-text-height: 16px;
+  --footer-min-height: 408px;
+  --footer-min-height-tablet: 452px;
+  --footer-col-margin-bottom: 46px;
+  --footer-col-1-padding-top: 32px;
+  --footer-item-margin-bottom-mobile: 22px;
+  --bottom-image-width: 172px;
+  --bottom-image-height: 168px;
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #FFFFFF; /* 스크롤 바운스 시 배경색 */
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.143;
+  letter-spacing: -0.02em;
+  /* 폰트 로딩 최적화 - 텍스트 깜빡임 방지 */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 폰트 로딩 중에도 일관된 렌더링 유지 */
+  font-display: swap;
+  /* 스크롤 바운스 방지 */
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 기본 텍스트 선택 색상 (index 및 그 외 모든 페이지) */
+::selection {
+  background-color: #FFF167;
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: #FFF167;
+  color: #000000;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* HEADER / NAV */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 20;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  backdrop-filter: none;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.site-header__inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 30px;
+}
+
+.site-logo {
+  display: inline-block;
+  line-height: 0;
+  transition: opacity 0.2s;
+}
+
+.site-logo:hover {
+  opacity: 0.8;
+}
+
+.site-logo img {
+  width: 494px;
+  height: 89px;
+}
+
+/* 모바일 NAV - 기본적으로 숨김 */
+.site-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70%;
+  height: 100vh;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 32px;
+  z-index: 20;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.site-nav.is-open {
+  transform: translateX(0);
+}
+
+/* 데스크탑: 네비게이션을 가로로 표시 */
+@media (min-width: 900px) {
+  .site-nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    padding: 0;
+    gap: 30px;
+    top: auto;
+    inset: auto;
+    align-items: center;
+    transform: none !important;
+    width: auto;
+    height: auto;
+    box-shadow: none;
+  }
+
+  .nav-dim-overlay {
+    display: none !important;
+  }
+
+  .nav-link {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    font-size: 23.23px;
+    letter-spacing: 0.04em;
+    color: var(--color-text);
+    padding: 30px;
+    border: none;
+    margin: 0;
+    margin-top: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+    text-align: center;
+    text-transform: none;
+    width: auto;
+    height: auto;
+    min-width: auto;
+    position: relative;
+    top: -8px;
+  }
+
+  .nav-link:hover {
+    opacity: 0.7;
+  }
+}
+
+.nav-link {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 23.23px;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  border: none;
+  transition: opacity 0.2s ease;
+  text-align: center;
+  text-transform: none;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Proposal 페이지에서 proposal 링크 텍스트 색상 변경 */
+.proposal-page .nav-link[href*="proposal"] {
+  color: #FFF167;
+}
+
+/* About 페이지에서 about 링크 텍스트 색상 변경 */
+.about-page .nav-link[href*="about"] {
+  color: #81543F;
+}
+
+/* 햄버거 버튼 - 기본적으로 숨김 (모바일에서만 표시) */
+.nav-toggle {
+  border: none;
+  background: transparent;
+  display: block;
+  padding: 0;
+  cursor: pointer;
+  z-index: 30;
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+.nav-toggle-icon {
+  width: auto;
+  height: 24px;
+  display: block;
+}
+
+/* MAIN */
+main {
+  padding: 0;
+  padding-top: 105px; /* 헤더 높이만큼 상단 여백 추가 (로고 높이 89px + padding 8px * 2 = 105px) */
+  min-height: calc(100vh - 163px);
+}
+
+/* GALLERY SECTION */
+.gallery-section {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0;
+  padding-top: 80px;
+  padding-bottom: 12px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  column-gap: 8px;
+  row-gap: 8px;
+  grid-auto-rows: auto;
+}
+
+.gallery-item {
+  overflow: hidden;
+  background: var(--color-bg);
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease-in-out, border-radius 0.6s ease-in-out;
+  transform: scale(1);
+  border-radius: 0;
+}
+
+/* 스크롤 시 이미지 scale 및 모서리 라운드 */
+/* 연속 스크롤: scale 0.93 */
+.gallery-item.is-scrolled-continuous img {
+  transform: scale(0.93);
+  border-radius: 12px;
+}
+
+/* 짧은 스크롤: scale 0.96 */
+.gallery-item.is-scrolled-short img {
+  transform: scale(0.96);
+  border-radius: 12px;
+}
+
+/* 이미지 비율 클래스 - 실제 이미지 파일 크기에 맞춤 */
+/* 작은 이미지: 344x366 */
+.gallery-item--ratio-344-366 {
+  aspect-ratio: 344 / 366;
+}
+
+/* 큰 이미지: 696x366 */
+.gallery-item--ratio-696-366 {
+  aspect-ratio: 696 / 366;
+}
+
+/* 큰 이미지는 2열 차지 */
+.gallery-item--large {
+  grid-column: span 2;
+}
+
+/* 작은 이미지는 1열 */
+.gallery-item--small {
+  grid-column: span 1;
+}
+
+/* 데스크탑에서 큰 이미지 배치 조정 */
+@media (min-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+
+
+}
+
+/* BOTTOM IMAGE - 첫 번째 컬럼 내부 */
+.bottom-image-wrapper {
+  position: relative;
+  width: var(--bottom-image-width);
+  height: var(--bottom-image-height);
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.bottom-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* FOOTER */
+.site-footer {
+  position: relative;
+  margin-top: 0;
+}
+
+.footer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.footer-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.site-footer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  color: var(--color-footer-text);
+  min-height: var(--footer-min-height);
+  width: 100%;
+}
+
+.footer-content {
+  position: relative;
+  padding-top: var(--footer-content-padding-top);
+  margin-bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-left: clamp(20px, calc((100vw - 1440px) / 2 + 520px), 520px);
+  padding-right: clamp(20px, calc((100vw - 1440px) / 2 + 520px), 520px);
+  justify-content: flex-start; /* 좌측 정렬 기준 */
+  gap: clamp(20px, 6.94vw, 100px); /* bottom-image.svg와 프로젝트 협업문의 텍스트 간격 가변 (1440px 기준 100px) */
+}
+
+/* 웹뷰에서 footer-bg.svg 기준으로 중앙 정렬 */
+@media (min-width: 900px) {
+  .footer-content {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  align-items: flex-start;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  align-items: flex-start;
+  margin-left: 0; /* gap으로 간격 처리 */
+}
+
+
+.footer-items-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 80px; /* footer-copyright(16px top + 높이) + 64px 간격 */
+}
+
+.footer-items-row .footer-item:nth-child(1) {
+  margin-left: 0; /* 프로젝트 협업 문의 */
+}
+
+.footer-items-row .footer-item:nth-child(2) {
+  margin-left: clamp(20px, 6.94vw, 100px); /* 프로젝트 협업문의와 스토어 상품문의 텍스트 간격 가변 (1440px 기준 100px) */
+}
+
+.footer-items-row .footer-item:nth-child(3) {
+  margin-left: clamp(20px, 6.94vw, 100px); /* 스토어 상품문의와 인스타그램 텍스트 간격 가변 (1440px 기준 100px) */
+}
+
+.footer-right {
+  display: none; /* 더 이상 사용하지 않음 */
+}
+
+.footer-label,
+.footer-text {
+  text-align: left;
+}
+
+.footer-title {
+  display: none;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.footer-item .footer-label {
+  margin-bottom: var(--footer-label-text-gap);
+}
+
+.footer-items-row .footer-item {
+  margin-bottom: 0;
+}
+
+.footer-label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--footer-label-font-size);
+  line-height: 1.1428571428571428em;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-align: left;
+  height: var(--footer-text-height);
+}
+
+.footer-text {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--footer-text-font-size);
+  line-height: 1.1428571428571428em;
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-align: left;
+  height: var(--footer-text-height);
+}
+
+.footer-text a {
+  text-decoration: none;
+}
+
+.footer-copyright {
+  position: absolute;
+  top: 16px; /* 기본 위치 */
+  left: 0;
+  text-align: left;
+  margin: 0;
+  width: auto;
+  margin-bottom: 0;
+}
+
+/* 웹뷰에서만 copyright 텍스트 10px 아래로 */
+@media (min-width: 900px) {
+  .footer-copyright {
+    top: 26px; /* 16px + 10px = 26px */
+  }
+}
+
+.footer-copyright p {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1em;
+  letter-spacing: 0.04em;
+  color: var(--color-footer-copyright);
+  margin: 0;
+}
+
+/* 반응형 - 태블릿 */
+@media (max-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+
+  .gallery-item--large {
+    grid-column: span 2;
+  }
+
+  .site-footer__inner {
+    padding: 0;
+    min-height: var(--footer-min-height-tablet);
+  }
+
+  .footer-content {
+    position: relative;
+    padding-top: 80px; /* footer-bg.svg 상단에서 80px 아래 */
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    flex-direction: column;
+    gap: var(--footer-col-margin-bottom);
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    margin-bottom: 0;
+    margin-left: 0 !important;
+  }
+
+  .footer-left:last-child,
+  .footer-center:last-child,
+  .footer-right:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer-left {
+    order: 2; /* footer-left를 마지막에 배치 (오른쪽 밑) */
+    margin-top: auto; /* 하단 정렬 */
+    align-self: flex-end; /* 오른쪽 정렬 */
+    margin-bottom: 40px; /* footer-bg.svg 하단에서 40px 위 */
+  }
+
+  .footer-left .bottom-image-wrapper {
+    display: block;
+    margin-left: auto; /* 오른쪽 정렬 */
+    width: calc(var(--bottom-image-width) * 0.7); /* 70% 크기 */
+    height: calc(var(--bottom-image-height) * 0.7); /* 70% 크기 */
+  }
+
+  .footer-center {
+    order: 1; /* footer-center를 먼저 배치 */
+  }
+
+  .footer-items-row {
+    flex-direction: column;
+    gap: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+    margin-top: 0;
+  }
+
+  .footer-items-row .footer-item {
+    margin-left: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .footer-items-row .footer-item:nth-child(1) {
+    margin-top: 12px; /* 프로젝트 협업문의 텍스트 12px 아래로 이동 */
+  }
+
+  .footer-items-row .footer-item:not(:last-child) {
+    margin-bottom: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+  }
+
+  .footer-center .footer-item:first-child {
+    margin-bottom: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+  }
+
+  .footer-copyright {
+    position: relative;
+    text-align: left;
+    top: auto;
+    margin-top: 0;
+    margin-bottom: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+  }
+
+  .footer-copyright p {
+    font-size: var(--footer-label-font-size);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding-top: 15px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .site-header__inner {
+    padding: 20px 20px 16px;
+  }
+
+  .site-logo img {
+    width: 260px;
+    height: auto;
+  }
+
+  /* 모바일: 햄버거 버튼 표시 */
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    top: 0;
+    padding-top: 100px; /* 헤더 높이만큼 상단 패딩 */
+  }
+
+  /* Dim 배경 - 전체 화면 */
+  .nav-dim-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .nav-dim-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    padding: 16px 0;
+    border: none;
+    width: 100%;
+    height: auto;
+    min-width: auto;
+    justify-content: flex-start;
+    text-transform: none;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+
+  /* 모바일: 작은 이미지는 1열, 큰 이미지는 전체 너비 */
+  .gallery-item--small {
+    grid-column: span 1 !important;
+  }
+
+  .gallery-item--large {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+
+  .site-footer__inner {
+    padding: 0;
+    min-height: var(--footer-min-height-tablet);
+  }
+
+  .footer-content {
+    position: relative;
+    padding-top: 80px; /* footer-bg.svg 상단에서 80px 아래 */
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    flex-direction: column;
+    gap: var(--footer-col-margin-bottom);
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    margin-bottom: 0;
+    margin-left: 0 !important;
+  }
+
+  .footer-left:last-child,
+  .footer-center:last-child,
+  .footer-right:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer-left {
+    order: 2; /* footer-left를 마지막에 배치 (오른쪽 밑) */
+    margin-top: auto; /* 하단 정렬 */
+    align-self: flex-end; /* 오른쪽 정렬 */
+    margin-bottom: 40px; /* footer-bg.svg 하단에서 40px 위 */
+  }
+
+  .footer-left .bottom-image-wrapper {
+    display: block;
+    margin-left: auto; /* 오른쪽 정렬 */
+    width: calc(var(--bottom-image-width) * 0.7); /* 70% 크기 */
+    height: calc(var(--bottom-image-height) * 0.7); /* 70% 크기 */
+  }
+
+  .footer-center {
+    order: 1; /* footer-center를 먼저 배치 */
+  }
+
+  .footer-items-row {
+    flex-direction: column;
+    gap: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+    margin-top: 0;
+  }
+
+  .footer-items-row .footer-item {
+    margin-left: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .footer-items-row .footer-item:nth-child(1) {
+    margin-top: 12px; /* 프로젝트 협업문의 텍스트 12px 아래로 이동 */
+  }
+
+  .footer-items-row .footer-item:not(:last-child) {
+    margin-bottom: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+  }
+
+  .footer-center .footer-item:first-child {
+    margin-bottom: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+  }
+
+  .footer-copyright {
+    position: relative;
+    text-align: left;
+    top: auto;
+    margin-top: 0;
+    margin-bottom: 12px; /* 간격 좁히기 (기존 22px에서 12px로) */
+  }
+
+  .footer-copyright p {
+    font-size: var(--footer-label-font-size);
+  }
+
+  .footer-title {
+    display: none;
+  }
+}
+
+/* 반응형 - 작은 모바일 */
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+
+  .gallery-item--small,
+  .gallery-item--large {
+    grid-column: span 1 !important;
+    width: 100% !important;
+  }
+  
+  /* 큰 이미지(가로가 긴 이미지)가 1줄에 1개만 배치되도록 */
+  .gallery-item--large {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* PROPOSAL PAGE */
+.proposal-page {
+  background-color: #81543F;
+}
+
+/* Proposal 페이지에서 텍스트 선택 시 배경색 */
+.proposal-page ::selection {
+  background-color: #FFF167;
+  color: #000000;
+}
+
+.proposal-page ::-moz-selection {
+  background-color: #FFF167;
+  color: #000000;
+}
+
+/* About 페이지에서 텍스트 선택 시 배경색 */
+.about-page ::selection {
+  background-color: #81543F;
+  color: #FFFFFF;
+}
+
+.about-page ::-moz-selection {
+  background-color: #81543F;
+  color: #FFFFFF;
+}
+
+.proposal-main {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0;
+  min-height: calc(100vh - 163px);
+}
+
+.proposal-container {
+  max-width: 100%;
+  margin: 0 auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 160px 0 120px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0;
+  column-gap: 88px;
+  align-items: start;
+}
+
+.proposal-intro {
+  grid-column: 1 / 5; /* 4개 컬럼 사용 */
+  padding-top: 0;
+  margin-left: 0;
+  margin-right: 60px; /* 본문 텍스트 필드를 60px 줄임 */
+}
+
+.proposal-intro-text {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.4em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.proposal-form {
+  grid-column: 5 / 9; /* 4개 컬럼 사용 */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-left: 0; /* 왼쪽 정렬 - 본문과 88px 거리 유지 (column-gap으로 설정) */
+  margin-right: 20px; /* 오른쪽 마진 20px 유지 */
+}
+
+.proposal-form-title {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.4em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0 0 0 0; /* 좌측 텍스트와 동일한 위치 */
+  padding: 0;
+}
+
+.form-group {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.form-group:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+}
+
+.form-label {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.6666666666666667em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  display: block;
+  margin-bottom: 15px;
+  padding-top: 30px;
+}
+
+.form-input,
+.form-textarea {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5555555555555556em;
+  letter-spacing: -0.02em;
+  color: rgba(0, 0, 0, 0.3);
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 0 0 15px;
+  margin-bottom: 45px;
+  outline: none;
+}
+
+/* 브라우저 autofill 배경색 제거 */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus,
+.form-input:-webkit-autofill:active,
+.form-textarea:-webkit-autofill,
+.form-textarea:-webkit-autofill:hover,
+.form-textarea:-webkit-autofill:focus,
+.form-textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.3) !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  color: #000000;
+}
+
+.form-input:not(:placeholder-shown),
+.form-textarea:not(:placeholder-shown),
+.form-input:not(:placeholder-shown):focus,
+.form-textarea:not(:placeholder-shown):focus {
+  color: #000000 !important;
+}
+
+/* autofill 상태에서도 텍스트 색상 유지 */
+.form-input:-webkit-autofill:not(:placeholder-shown),
+.form-textarea:-webkit-autofill:not(:placeholder-shown) {
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 56px;
+}
+
+.form-file {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5555555555555556em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 0 0 15px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  outline: none;
+}
+
+.form-file:not(:placeholder-shown) {
+  color: #000000;
+}
+
+.form-file::file-selector-button {
+  font-size: 16px;
+  padding: 8px 16px;
+  border: 1px solid #000000;
+  background: transparent;
+  color: #000000;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: all 0.2s ease;
+}
+
+.form-file::file-selector-button:hover {
+  background-color: #000000;
+  color: #81543F;
+}
+
+.form-file-hint {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5555555555555556em;
+  letter-spacing: -0.02em;
+  color: rgba(0, 0, 0, 0.3);
+  margin: 0 0 10px;
+}
+
+.form-submit {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6666666666666667em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  background: transparent;
+  border: 1px solid #000000;
+  padding: 15px 30px;
+  width: 198px;
+  height: 68px;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-submit:hover {
+  background-color: #000000;
+  color: #81543F;
+}
+
+/* 반응형 - 태블릿 */
+@media (max-width: 1200px) {
+  .proposal-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+    column-gap: 0;
+    padding: 100px 40px 120px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .proposal-intro {
+    grid-column: 1 / -1;
+    margin-bottom: 60px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .proposal-form {
+    grid-column: 1 / -1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .proposal-container {
+    padding: 120px 0 80px;
+    gap: 0;
+    column-gap: 0;
+    grid-template-columns: 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .proposal-intro {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .proposal-form {
+    grid-column: 1 / -1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .proposal-intro-text {
+    font-size: 22px;
+  }
+
+  .proposal-form-title {
+    font-size: 22px;
+  }
+
+  .form-label {
+    font-size: 16px;
+    padding-top: 20px;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-file {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .form-file-hint {
+    font-size: 16px;
+  }
+
+  .form-submit {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+/* ABOUT PAGE */
+.about-page {
+  background-color: #FFF167;
+}
+
+.about-main {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0;
+  min-height: calc(100vh - 163px);
+}
+
+.about-container {
+  max-width: 100%;
+  margin: 0 auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 160px 0 44px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0;
+  column-gap: 88px;
+  align-items: start;
+}
+
+.about-intro {
+  grid-column: 1 / 5; /* 4개 컬럼 사용 */
+  margin-left: 0;
+  margin-right: 60px; /* 본문 텍스트 필드를 60px 줄임 (20px + 40px) */
+}
+
+.about-history {
+  grid-column: 5 / 9; /* 4개 컬럼 사용 */
+  padding-top: 0;
+  margin-left: 0; /* 왼쪽 정렬 - 본문과 88px 거리 유지 (column-gap으로 설정) */
+  margin-right: 20px; /* 오른쪽 마진 20px 유지 */
+}
+
+
+.about-intro-text {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.4em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.about-history-title {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.6666666666666667em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0 0 26px;
+  padding-top: 0;
+}
+
+.about-history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-history-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  gap: 16px;
+}
+
+.history-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000000;
+  flex-shrink: 0;
+  margin-top: 16px; /* 첫 줄의 중앙에 정렬 (line-height 40px * 1.6666666666666667 = 약 40px, 중앙은 20px, 점 높이 8px이므로 상단은 20px - 4px = 16px) */
+}
+
+.history-text {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.6666666666666667em;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.about-images {
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0 0 120px;
+  margin-top: 0;
+}
+
+.about-image-wrapper {
+  width: 676px; /* 520px * 1.3 = 676px */
+  height: 445.9px; /* 343px * 1.3 = 445.9px */
+}
+
+.about-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: luminosity;
+}
+
+/* 모바일 뷰에서 이미지가 잘리지 않도록 */
+@media (max-width: 768px) {
+  .about-image-wrapper img {
+    object-fit: contain;
+  }
+}
+
+/* About 페이지에서 about 링크 텍스트 색상 변경 */
+.about-page .nav-link[href*="about"] {
+  color: #81543F;
+}
+
+/* 반응형 - 태블릿 */
+@media (max-width: 1200px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+    column-gap: 0;
+    padding: 160px 40px 0;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .about-intro {
+    grid-column: 1 / -1;
+    margin-bottom: 60px;
+    margin-left: 0;
+  }
+
+  .about-history {
+    grid-column: 1 / -1;
+    margin-left: 0;
+  }
+
+  .about-images {
+    padding: 0 40px 80px;
+  }
+
+  .about-image-wrapper {
+    width: 100%;
+    max-width: 520px;
+  }
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 120px 20px 0;
+    gap: 0;
+    column-gap: 0;
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-intro {
+    grid-column: 1 / -1; /* 전체 컬럼 사용 */
+    margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-history {
+    grid-column: 1 / -1; /* 전체 컬럼 사용, 본문 밑으로 배치 */
+    margin-left: 0; /* 본문과 동일한 좌측 정렬 */
+    margin-right: 0;
+    padding-top: 40px; /* 마진값 유지 */
+    border-top: 1px solid #000000; /* 1px 선 추가 */
+  }
+
+  .about-intro-text,
+  .about-history-title,
+  .history-text {
+    font-size: 22px;
+  }
+
+  .about-images {
+    padding: 20px 0 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0;
+  }
+
+  .about-image-wrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 520 / 343;
+  }
+}
+/* WORKS PAGE */
+.works-page {
+  background-color: #FFFFFF;
+  overflow-y: auto;
+  overflow-x: hidden;
+  animation: fadeIn 0.6s ease-out;
+  transition: opacity 0.4s ease-out;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.works-page.closing {
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 닫기 버튼 */
+.works-close-btn {
+  position: fixed;
+  top: 16px;
+  right: 30px;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  transition: opacity 0.2s ease;
+  padding: 0;
+}
+
+.works-close-btn:hover {
+  opacity: 0.7;
+}
+
+.works-close-btn svg {
+  width: 19px;
+  height: 19px;
+}
+
+.works-main {
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  cursor: pointer; /* 빈 공간 클릭용 */
+}
+
+.works-container {
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+  padding-bottom: 100px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+/* 위쪽 메인 이미지 */
+.works-image-main {
+  position: fixed;
+  left: 50%;
+  top: 52px;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 630px;
+  height: auto;
+  aspect-ratio: 702 / 747;
+  cursor: default;
+}
+
+.works-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #C0A392;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.works-image-placeholder .works-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.works-image-main:hover .works-image-placeholder .works-image {
+  transform: scale(1.2);
+}
+
+/* 이미지 설명 영역 */
+.works-info {
+  position: fixed;
+  left: calc(50% - min(45vw, 315px)); /* 이미지의 왼쪽 끝 위치에 맞춤 (세로가 긴 이미지용) */
+  top: 744px; /* 732px에서 12px 증가 */
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(19px * 1.3); /* 타이틀과 디스크립션 사이 행간 130% (19px * 1.3 = 24.7px) */
+  text-align: left;
+  align-items: flex-start;
+  cursor: default;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* 가로가 긴 이미지일 때는 JavaScript에서 동적으로 left 값 설정 */
+
+.works-title {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: calc(19px - 1pt); /* 19px에서 1pt 감소 (약 17.67px) */
+  font-weight: 800; /* Extra Bold */
+  line-height: 0;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.55; /* 55% 투명도 (50%에서 5% 증가) */
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  text-align: left;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: opacity 0.2s ease;
+}
+
+.works-title:hover {
+  opacity: 1; /* 100% 투명도 (완전 불투명) */
+}
+
+.works-description {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: calc(19px - 1pt); /* 19px에서 1pt 감소 (약 17.67px) */
+  font-weight: 800; /* Extra Bold */
+  line-height: 0;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.25; /* 25% 투명도 (30%에서 5% 감소) */
+  margin: 0;
+  margin-top: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  text-align: left;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: opacity 0.2s ease;
+}
+
+.works-description:hover {
+  opacity: 1; /* 100% 투명도 (완전 불투명) */
+}
+
+/* 하단 썸네일 그리드 */
+.works-thumbnails {
+  position: fixed;
+  left: 0;
+  bottom: 20px;
+  width: 100vw;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scroll-snap-type: none;
+  -webkit-overflow-scrolling: touch;
+  align-items: flex-start;
+}
+
+.works-thumbnails::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.works-thumbnail {
+  width: 78px;
+  height: 83px;
+  flex-shrink: 0;
+  background-color: #FFFFFF;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: opacity 0.2s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+}
+
+/* 가로가 긴 썸네일 (696x366 비율) */
+.works-thumbnail--wide {
+  width: 158px; /* 83px * (696/366) ≈ 158px */
+  height: 83px;
+}
+
+.works-thumbnail:hover {
+  opacity: 1;
+}
+
+.works-thumbnail.active {
+  border: 2px solid transparent;
+}
+
+.works-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  mix-blend-mode: luminosity;
+  transition: mix-blend-mode 0.2s ease;
+}
+
+.works-thumbnail:hover img {
+  mix-blend-mode: normal;
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .works-page {
+    overflow: hidden;
+  }
+
+  .works-main {
+    overflow: hidden;
+  }
+
+  .works-close-btn {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 100;
+  }
+
+  .works-container {
+    padding: 20px;
+    padding-top: 46px; /* 닫기 버튼(16px top + 40px height) + 10px 간격에서 20px 감소 */
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .works-image-main {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 15px;
+    margin-top: 0;
+    aspect-ratio: 702 / 747;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 가로가 긴 이미지일 때 모바일 뷰에서 140px 아래로 이동 */
+  .works-image-main.is-wide-mobile {
+    margin-top: 140px;
+  }
+
+  .works-image-placeholder {
+    aspect-ratio: 702 / 747;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .works-info {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 10px; /* 타이틀과 디스크립션 위치를 10px 아래로 이동 (4px + 6px) */
+    text-align: center;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+  }
+
+  /* 가로가 긴 이미지일 때 정보도 함께 140px 아래로 이동 */
+  .works-info.is-wide-mobile {
+    margin-top: 10px; /* 짧은 비율 이미지와 동일한 간격 (25px) */
+  }
+
+  .works-title,
+  .works-description {
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-size: 14px; /* 15px에서 1px 감소 */
+    font-weight: 800; /* Extra Bold */
+    line-height: 0;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+  }
+  
+  .works-title {
+    opacity: 0.55; /* 55% 투명도 (50%에서 5% 증가) */
+    transition: opacity 0.2s ease;
+  }
+  
+  .works-title:hover {
+    opacity: 1; /* 100% 투명도 (완전 불투명) */
+  }
+  
+  .works-description {
+    opacity: 0.25; /* 25% 투명도 (30%에서 5% 감소) */
+    transition: opacity 0.2s ease;
+  }
+  
+  .works-description:hover {
+    opacity: 1; /* 100% 투명도 (완전 불투명) */
+  }
+
+  .works-thumbnails {
+    display: none; /* 모바일 뷰에서 썸네일 숨김 */
+  }
+}
+

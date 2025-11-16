@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>SOOKAGRAPHIC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-big.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-big.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon-big.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-big.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon-big.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon-big.png" />
+
+  <!-- Barlow (헤더, 버튼용) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Noto Sans KR (본문용) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Pretendard -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-logo">
+        <img src="assets/images/logo.svg" alt="SOOKAGRAPHIC" />
+      </a>
+
+      <!-- 햄버거 버튼 (모바일용) -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <img src="assets/images/mobile-menu.svg" alt="Menu" class="nav-toggle-icon" />
+      </button>
+
+      <!-- 내비게이션 -->
+      <nav class="site-nav">
+        <a href="about.html" class="nav-link">소개</a>
+        <a href="proposal.html" class="nav-link">의뢰</a>
+        <a href="http://smartstore.naver.com/sookagraphic" class="nav-link" data-store-link data-store-pc="http://smartstore.naver.com/sookagraphic" data-store-mobile="https://m.smartstore.naver.com/sookagraphic">가게</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 이미지 그리드 섹션 -->
+    <section class="gallery-section">
+      <div class="gallery-grid">
+        <!-- 첫 번째 행: 4개의 작은 이미지 (344x366) -->
+        <a href="works.html?work=01" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-01.svg" alt="Work 01" />
+        </a>
+        <a href="works.html?work=02" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-02.svg" alt="Work 02" />
+        </a>
+        <a href="works.html?work=03" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-03.svg" alt="Work 03" />
+        </a>
+        <a href="works.html?work=04" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-04.svg" alt="Work 04" />
+        </a>
+
+        <!-- 두 번째 행: 큰 이미지 (696x366) + 3개의 작은 이미지 (344x366) -->
+        <a href="works.html?work=05" class="gallery-item gallery-item--large gallery-item--ratio-696-366">
+          <img src="assets/images/work-05.svg" alt="Work 05" />
+        </a>
+        <a href="works.html?work=06" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-06.svg" alt="Work 06" />
+        </a>
+        <a href="works.html?work=07" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-07.svg" alt="Work 07" />
+        </a>
+        <a href="works.html?work=08" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-08.svg" alt="Work 08" />
+        </a>
+
+        <!-- 세 번째 행: 작은 이미지 (344x366) + 큰 이미지 (696x366) -->
+        <a href="works.html?work=09" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-09.svg" alt="Work 09" />
+        </a>
+        <a href="works.html?work=10" class="gallery-item gallery-item--large gallery-item--ratio-696-366">
+          <img src="assets/images/work-10.svg" alt="Work 10" />
+        </a>
+
+        <!-- 네 번째 행: 3개의 작은 이미지 (344x366) -->
+        <a href="works.html?work=13" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-13.svg" alt="Work 13" />
+        </a>
+        <a href="works.html?work=14" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-14.svg" alt="Work 14" />
+        </a>
+        <a href="works.html?work=15" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-15.svg" alt="Work 15" />
+        </a>
+
+        <!-- 다섯 번째 행: 작은 이미지 (344x366) -->
+        <a href="works.html?work=16" class="gallery-item gallery-item--small gallery-item--ratio-344-366">
+          <img src="assets/images/work-16.svg" alt="Work 16" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bg">
+      <img src="assets/images/footer-bg.svg" alt="" aria-hidden="true" />
+    </div>
+    <div class="site-footer__inner">
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="bottom-image-wrapper">
+            <img src="assets/images/bottom-image.svg" alt="Bottom illustration" />
+          </div>
+        </div>
+        <div class="footer-center">
+          <div class="footer-copyright">
+            <p>© SOOKAGRAPHIC 2025</p>
+          </div>
+          <div class="footer-items-row">
+            <div class="footer-item">
+              <p class="footer-label">프로젝트 협업 문의</p>
+              <p class="footer-text">
+                <a href="proposal.html">www.sookagraphic.com/proposal</a>
+              </p>
+            </div>
+            <div class="footer-item">
+              <p class="footer-label">스토어 상품 문의</p>
+              <p class="footer-text">
+                <a href="mailto:sookamail@naver.com">sookamail@naver.com</a>
+              </p>
+            </div>
+            <div class="footer-item">
+              <p class="footer-label">인스타그램</p>
+              <p class="footer-text">
+                <a href="https://www.instagram.com/sookagraphic/" target="_blank" rel="noopener noreferrer">@sookagraphic</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+{
+  "images": [
+    {
+      "id": "work-01",
+      "source": "local",
+      "localPath": "assets/images/work-01.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-02",
+      "source": "local",
+      "localPath": "assets/images/work-02.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-03",
+      "source": "local",
+      "localPath": "assets/images/work-03.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-04",
+      "source": "local",
+      "localPath": "assets/images/work-04.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-05",
+      "source": "local",
+      "localPath": "assets/images/work-05.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-06",
+      "source": "local",
+      "localPath": "assets/images/work-06.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-07",
+      "source": "local",
+      "localPath": "assets/images/work-07.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-08",
+      "source": "local",
+      "localPath": "assets/images/work-08.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-09",
+      "source": "local",
+      "localPath": "assets/images/work-09.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-10",
+      "source": "local",
+      "localPath": "assets/images/work-10.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-11",
+      "source": "local",
+      "localPath": "assets/images/work-11.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-12",
+      "source": "local",
+      "localPath": "assets/images/work-12.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-13",
+      "source": "local",
+      "localPath": "assets/images/work-13.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-14",
+      "source": "local",
+      "localPath": "assets/images/work-14.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-15",
+      "source": "local",
+      "localPath": "assets/images/work-15.svg",
+      "instagramUrl": null
+    },
+    {
+      "id": "work-16",
+      "source": "local",
+      "localPath": "assets/images/work-16.svg",
+      "instagramUrl": null
+    }
+  ],
+  "instagram": {
+    "username": "sookagraphic",
+    "autoSync": false,
+    "accessToken": null
+  }
+}
+
